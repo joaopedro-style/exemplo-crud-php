@@ -6,7 +6,7 @@ require_once "conecta.php";
 
 // listarFabricantes: usada pela página fabricantes/visualizar.php
 function listarFabricantes(PDO $conexao):array {
-    $sql = "SELECT * FROM fabricantes";
+    $sql = "SELECT * FROM fabricantes ORDER BY nome";
 
     /* Preparando o comando SQL ANTES de executar no servidor
     e guardando em memória (Variável consulta ou query) */
