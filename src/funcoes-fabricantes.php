@@ -69,13 +69,14 @@ function listarUmFabricante(PDO $conexao, int $idFabricante):array {
 }
 
 function atualizarFabricante($conexao, $idFabricante, $nomeDoFabricante): void {
-    $sql = "UPDATE SET fabricante WHERE id = :id ";
+    $sql = "UPDATE fabricante SET nomeDoFabricante = :nome WHERE id = :id";
 
     try {
         $update = $conexao->prepare($sql);
-        $update->bindvalue(":id", $idFabricante, $nomeDoFabricante, PDO::PARAM_INT);
+        $update->bindvalue(":nome", $nomeDoFabricante, PDO::PARAM_STR);
+        $update->bindvalue(":id", $idFabricante, PDO::PARAM_INT);
         $update->execute();
     } catch (Exception $erro) {
-        die("Erro ao carregar fabricante: ".$erro->getMessage());
+        die("Erro ao atualizar fabricante: ".$erro->getMessage());
     }
 }
