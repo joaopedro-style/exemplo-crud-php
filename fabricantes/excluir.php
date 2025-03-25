@@ -4,7 +4,9 @@ $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
 
 /* Verificando se houve o "SIM" para excluir */
 if (isset($_GET['confirmar-exclusao'])) {
-    
+    excluirFabricante($conexao, $id);
+    header("location:visualizar.php");
+    exit;
 }
 ?>
 <!DOCTYPE html>
