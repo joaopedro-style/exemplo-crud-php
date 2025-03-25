@@ -1,3 +1,7 @@
+<?php // produtos/visualizar.php
+require_once "../src/funcoes-produtos.php";
+$listaDeProdutos = listarProdutos($conexao);
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
