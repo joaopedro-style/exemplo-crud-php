@@ -7,7 +7,7 @@ function listarProdutos(PDO $conexao):array {
     try {
         $consulta = $conexao->prepare($sql);
         $consulta->execute();
-        return $consulta->fetch(PDO::FETCH_ASSOC);
+        return $consulta->fetchAll(PDO::FETCH_ASSOC);
     } catch (Exception $erro) {
         die("Erro ao carregar produtos: ".$erro->getMessage());
     }
