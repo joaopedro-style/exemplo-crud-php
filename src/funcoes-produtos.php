@@ -25,6 +25,14 @@ function listarProdutos(PDO $conexao):array {
 function inserirProduto(
     PDO $conexao, string $nome, float $preco, int $quantidade, int $idfabricante, string $descricao
     ):void {
+        $sql = "INSERT INTO produtos(nome) VALUES(:nome)";
 
+        try {
+            $consulta = $conexao->prepare($sql);
+            $consulta->bindValue(":nome", $nome, PDO::PARAM_STR);
+            $consulta->bindValue(":preco", $preco, PDO::PARAM_STR);
+        } catch (Exception $erro) {
+            die("Erro ao inserir produto: ".$erro->getMessage());
+        }
     
 }
