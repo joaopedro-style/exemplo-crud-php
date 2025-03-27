@@ -31,6 +31,10 @@ function inserirProduto(
             $consulta = $conexao->prepare($sql);
             $consulta->bindValue(":nome", $nome, PDO::PARAM_STR);
             $consulta->bindValue(":preco", $preco, PDO::PARAM_STR);
+            $consulta->bindValue("quantidade", $quantidade, PDO::PARAM_INT);
+            $consulta->bindValue("fabricante", $idfabricante, PDO::PARAM_INT);
+            $consulta->bindValue("descricao", $descricao, PDO::PARAM_STR);
+            $consulta->execute();
         } catch (Exception $erro) {
             die("Erro ao inserir produto: ".$erro->getMessage());
         }
