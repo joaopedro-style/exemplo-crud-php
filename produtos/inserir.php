@@ -11,6 +11,7 @@ if (isset($_POST["inserir"])) {
 
     $quantidade = filter_input(INPUT_POST, "quantidade", FILTER_SANITIZE_NUMBER_INT);
 
+    // Obs.: lembre-se que capturamos na verdade o value (que na prática é o id do fabricante)
     $idfabricante = filter_input(INPUT_POST, "fabricante", FILTER_SANITIZE_NUMBER_INT);
 
     $descricao = filter_input(INPUT_POST, "descricao", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
