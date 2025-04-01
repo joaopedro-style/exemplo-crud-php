@@ -20,6 +20,19 @@ function listarProdutos(PDO $conexao):array {
     }
 }
 
+function listarUmProduto(PDO $conexao, int $idprodutos):array {
+    $sql = "SELECT * FROM produtos WHERE id = :id";
+
+    try {
+        $consulta = $conexao->prepare($sql);
+        $consulta->bindValue(":id", $idprodutos, PDO::PARAM_INT);
+        $consulta->execute();
+        return $consulta->fetch(PDO::FETCH_ASSOC);
+    } catch (Exception $erro) {
+        die("Erro ao atualizar produtos: ".$erro->getMessage());
+    }
+}
+
 
 
 function inserirProduto(
