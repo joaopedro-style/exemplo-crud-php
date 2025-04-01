@@ -33,7 +33,9 @@ $listaDeProdutos = listarProdutos($conexao);
                     <p><b>Quantidade: </b> <?=$produto["quantidade"]?></p>
                     <p><b>Total:</b><?=formatarPreco($produto["preco"] * $produto["quantidade"])?></p>
 
-                    <a class="btn btn-warning btn-sm" href="atualizar.php?id=<?=$produto['id']?>">Atualizar</a>
+                    <p>
+                        <a class="btn btn-warning btn-sm" href="atualizar.php?id=<?=$produto['id']?>">Editar</a>
+                    </p>
 
                 </article>
             </div>
