@@ -53,3 +53,23 @@ function inserirProduto(
         }
     
 }
+
+function atualizarProduto(
+    PDO $conexao, int $idProduto, string $nomeDoProduto, float $preco, int $quantidade, int $idfabricante, string $descricao
+    ): void {
+    $sql = "UPDATE produtos SET nome = :nome, preco = :preco, quantidade = :quantidade, fabricante_id = :fabricante, descricao = :descricao
+    WHERE id = :id";
+
+    try {
+        $consulta = $conexao->prepare($sql);
+        $consulta->bindvalue(":id", $idProduto, PDO::PARAM_INT);
+        $consulta->bindvalue(":nome", $nomeDoProduto, PDO::PARAM_STR);
+        $consulta->bindValue(":preco", $preco, PDO::PARAM_STR);
+        $consulta->bindValue(":quantidade", $quantidade, PDO::PARAM_INT);
+        $consulta->bindValue(":fabricante", $idfabricante, PDO::PARAM_INT);
+        $consulta->bindValue(":descricao", $descricao, PDO::PARAM_STR);
+        $consulta->execute();
+    } catch (Exception $erro) {
+        die("Erro ao atualizar produtos: ".$erro->getMessage());
+    }
+}
