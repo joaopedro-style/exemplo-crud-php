@@ -66,7 +66,7 @@ function atualizarProduto(
         $consulta->bindvalue(":nome", $nomeDoProduto, PDO::PARAM_STR);
         $consulta->bindValue(":preco", $preco, PDO::PARAM_STR);
         $consulta->bindValue(":quantidade", $quantidade, PDO::PARAM_INT);
-        $consulta->bindValue(":fabricante", $idfabricante, PDO::PARAM_INT);
+        $consulta->bindValue(":fabricante_id", $idfabricante, PDO::PARAM_INT);
         $consulta->bindValue(":descricao", $descricao, PDO::PARAM_STR);
         $consulta->execute();
     } catch (Exception $erro) {

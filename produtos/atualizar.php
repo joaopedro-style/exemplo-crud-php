@@ -19,13 +19,13 @@ if ( isset($_POST['atualizar']) ){
     $quantidade = filter_input(INPUT_POST, "quantidade",
     FILTER_SANITIZE_NUMBER_INT);
 
-    $fabricante = filter_input(INPUT_POST, "fabricante",
+    $fabricanteId = filter_input(INPUT_POST, "fabricante",
     FILTER_SANITIZE_NUMBER_INT);
 
     $descricao = filter_input(INPUT_POST, "descricao",
     FILTER_SANITIZE_SPECIAL_CHARS);
 
-    atualizarProduto($conexao, $id, $nome, $preco, $quantidade, $fabricante, $descricao);
+    atualizarProduto($conexao, $id, $nome, $preco, $quantidade, $fabricanteId, $descricao);
 
     header("location:visualizar.php");
     exit;
@@ -48,6 +48,7 @@ if ( isset($_POST['atualizar']) ){
         <hr>
 
         <form action="" method="post" class="w-50">
+            <input type="hidden" name="id" value="<?=$produto['id']?>">
             <div class="mb-3">
                 <label class="form-label" for="nome">Nome:</label>
                 <input value="<?=$produto['nome']?>" class="form-control" type="text" name="nome" id="nome" required>
